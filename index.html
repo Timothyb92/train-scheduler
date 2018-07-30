@@ -11,6 +11,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/af.js"></script>
   <script src="assets/javascript/main.js"></script>
 </head>
 <body>
@@ -31,8 +32,38 @@
                             <th scope="col">Next Arrival</th>
                             <th scope="col">Minutes Away</th>
                         </tr>
+                        <tr>
+                            <td>ITX22</td>
+                            <td>Busan</td>
+                            <td>30</td>
+                            <td>18:00</td>
+                            <td>20</td>
+                        </tr>
                     </thead>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="trainName">Train Name</label>
+                        <input type="text" class="form-control" id="trainName">
+                    </div>
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" id="destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstTrainTime">First Train Time (HH:MM - Military time)</label>
+                        <input type="text" class="form-control" id="firstTrainTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="frequency">Frequency (mins)</label>
+                        <input type="number" class="form-control" id="frequency">
+                    </div>
+                    <button class="btn">Submit</button>
+                </form>
             </div>
         </div>
     </div>
