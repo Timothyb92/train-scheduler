@@ -1,11 +1,45 @@
 $(document).ready(function(){
     var config = {
-        apiKey: "AIzaSyCb_czrT2veSzGMH7XJTCu3VdT0zo2kxdw",
-        authDomain: "best-ever-8ec0f.firebaseapp.com",
-        databaseURL: "https://best-ever-8ec0f.firebaseio.com",
-        projectId: "best-ever-8ec0f",
-        storageBucket: "best-ever-8ec0f.appspot.com",
-        messagingSenderId: "853031341422"
+        authDomain: "train-scheduler-37fc2.firebaseapp.com",
+        databaseURL: "https://train-scheduler-37fc2.firebaseio.com",
+        projectId: "train-scheduler-37fc2",
+        storageBucket: "train-scheduler-37fc2.appspot.com",
+        messagingSenderId: "455696826788"
     };
     firebase.initializeApp(config);
+
+    var name = $("#trainName").val().trim();
+    var destination = $("#destination").val().trim();
+    var firstTrainTime = $("#firstTrainTime").val().trim();
+    var freq = $("#frequency").val().trim();
+    var minsAway;
+
+    $("#addTrain").click(function(event){
+        event.preventDevault();
+        console.log(name);
+        console.log(destination);
+        console.log(firstTrainTime);
+        console.log(freq);
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
