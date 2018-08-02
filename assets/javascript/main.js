@@ -10,29 +10,24 @@ $(document).ready(function(){
       firebase.initializeApp(config);
 
     var db = firebase.database();
-    var connectedRef = db.ref(".info/connected");
-    var connectionsRef = db.ref("/connections");
-    var name = $("#trainName").val().trim();
-    var destination = $("#destination").val().trim();
-    var firstTrainTime = $("#firstTrainTime").val().trim();
-    var freq = $("#frequency").val().trim();
+    var trainName = $("#trainName").val().trim();
+    var trainDestination = $("#destination").val().trim();
+    var trainFirstTime = $("#firstTrainTime").val().trim();
+    var trainFreq = $("#frequency").val().trim();
     var minsAway;
     var trainTimeMoment = moment($("#firstTrainTime").val(), "HH:mm").format("X");
-    var trainTimeFormat = moment.unix(trainTimeMoment).format("")
+    var trainTimeFormat = moment.unix(trainTimeMoment).format("h:mma");
 
-    // connectedRef.on("value", function(snapshot){
-    //     if (snapshot.val()){
-    //         var con = connectionsRef.push(true);
-    //         con.onDisconnect().remove();
-    //     }
-    // })
 
     $("#addTrain").click(function(event){
         event.preventDevault();
-        console.log(name);
-        console.log(destination);
-        console.log(firstTrainTime);
-        console.log(freq);
+        var newTrain = {
+            name: trainName,
+            destination: trainDestination,
+            frequency: trainFreq,
+            firstTime: trainFirstTime,
+            
+        };
     })
 
 
