@@ -15,18 +15,21 @@ $(document).ready(function(){
     var trainFirstTime = $("#firstTrainTime").val().trim();
     var trainFreq = $("#frequency").val().trim();
     var minsAway;
-    var trainTimeMoment = moment($("#firstTrainTime").val(), "HH:mm").format("X");
-    var trainTimeFormat = moment.unix(trainTimeMoment).format("h:mma");
+    // var trainTimeConverted = moment($("#firstTrainTime").val(), "HH:mm").format("X");
+    var trainTimeConverted = moment(trainFirstTime, "HH:mm").subtract(1, "years");
+    // var trainTimeFormat = moment.unix(trainTimeConverted).format("h:mma");
+    var timeDiff = moment().diff(moment(trainTimeConverted), "minutes")
+    // console.log(timeDiff);
 
 
     $("#addTrain").click(function(event){
-        event.preventDevault();
+        event.preventDefault();
         var newTrain = {
             name: trainName,
             destination: trainDestination,
             frequency: trainFreq,
             firstTime: trainFirstTime,
-            
+
         };
     })
 
