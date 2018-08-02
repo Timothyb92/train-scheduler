@@ -10,21 +10,34 @@ $(document).ready(function(){
       firebase.initializeApp(config);
 
       var db = firebase.database();
+      $("#addTrain").click(function(event){
       
       var trainFirstTime = $("#firstTrainTime").val().trim();
       var trainFreq = $("#frequency").val().trim();
       var trainName = $("#trainName").val().trim();
       var trainDestination = $("#destination").val().trim();
-      var firstTimeConverted = moment(firstTrainTime, "HH:mm").subtract(1, "years");
+      var firstTimeConverted = moment(trainFirstTime, "HH:mm").subtract(1, "years");
       var timeDiff = moment().diff(moment(firstTimeConverted), "minutes");
       var remainder = timeDiff % trainFreq;
-      var minutesTillTrain = trainFreq - remainder;
-      var nextTrain = moment().add(minutesTillTrain, "minutes");
+      var minsToTrain = trainFreq - remainder;
+      var nextTrain = moment().add(minsToTrain, "minutes");
 
-    $("#addTrain").click(function(event){
         event.preventDefault();
-        console.log("first train time: ");
-        console.log(trainFirstTime);
+        var newTrain = {
+            name: trainName,
+            destination: trainDestination,
+            frequency: trainFreq,
+            nextArrival: nextTrain,
+            minutesAway: minsToTrain
+        };
+        console.log("first train time: " + trainFirstTime);
+        console.log("newTrain" + newTrain);
+        console.log("first time conv" + firstTimeConverted);
+        console.log("mins to train " + minsToTrain);
+        console.log("next arrival " + nextTrain);
+        
+        
+        
         
     })
 
