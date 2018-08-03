@@ -42,9 +42,18 @@ $(document).ready(function(){
         
         
         
-        
     })
-
+    
+    db.ref().on("child_added", function(snapshot){
+        console.log("child_added ran");
+        var newRow = $("<tr>");
+        newRow.append($("<td>").text(snapshot.val().name));
+        newRow.append($("<td>").text(snapshot.val().destination));
+        newRow.append($("<td>").text(snapshot.val().frequency));
+        newRow.append($("<td>").text(snapshot.val().nextArrival));
+        newRow.append($("<td>").text(snapshot.val().minutesAway));
+        $("table").append(newRow);
+    })
 
 
 
