@@ -27,14 +27,18 @@ $(document).ready(function(){
             name: trainName,
             destination: trainDestination,
             frequency: trainFreq,
-            nextArrival: nextTrain,
-            minutesAway: minsToTrain
+            nextArrival: moment(nextTrain).format("hh:mm A"),
+            minutesAway: minsToTrain,
+            timeAdded: firebase.database.ServerValue.TIMESTAMP
         };
-        console.log("first train time: " + trainFirstTime);
-        console.log("newTrain" + newTrain);
-        console.log("first time conv" + firstTimeConverted);
-        console.log("mins to train " + minsToTrain);
-        console.log("next arrival " + nextTrain);
+        db.ref().push(newTrain);
+        db.ref().orderByChild("timeAdded").limitToLast(1).on("child_added", function(snapshot){
+            console.log(snapshot.val().destination);
+            console.log(snapshot.val().frequency);
+            console.log(snapshot.val().minutesAway);
+            console.log(snapshot.val().name);
+            console.log(snapshot.val().nextArrival);
+        })
         
         
         
